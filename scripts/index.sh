@@ -10,7 +10,8 @@
 #bin/bash
 if ["$#" -ne 2 ]; then
 	echo "Usage: $0 <genomefile> <output_directory>"
-
+	exit 1
+fi
 genomefile=["$1"]
 output_directory=["$2"]
 STAR --runThreadN 4 --runMode genomeGenerate --genomeDir "$output_directory" \
