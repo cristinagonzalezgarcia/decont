@@ -16,3 +16,31 @@
 #   CCAGGATTTACAGACTTTAAA
 #
 #   If $4 == "another" only the **first two sequence** should be output
+
+#Verificar que el archivo no esta vacio:
+if ["$#" -lt 2 ] then
+	echo "Usage: $0 <url> <output_directory> [yes/no] [filter_keyboard]"
+
+url = ["$1"]
+output_directory = ["$2"]
+uncompress = ["$3"]
+filter_keyboard=["$4"]
+
+#Create directory if it doesnt exist
+mkdir -p "output_directory"
+
+#Download the file:
+wget -o   "output_directory/$(basename= "$url")" "$url"
+
+#uncompress
+
+if ["uncompress" == "yes"]; then
+	gunzip "output_directory/$(basename= "$url")" 
+fi
+
+#Filter
+
+if [ -n "filter_keyboard"] ; then
+	grep "filter_keyboard" "$output_directory/$(basename= "$url")" > "output_directory/filtered_$(basename= "$url")"
+fi
+
