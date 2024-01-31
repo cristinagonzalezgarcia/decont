@@ -1,0 +1,10 @@
+name: decont_examen
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - cutadapt
+  - star
+  - fastqc
+  - multiqc
+prefix: /home/vant/miniforge3/envs/decont_examen
